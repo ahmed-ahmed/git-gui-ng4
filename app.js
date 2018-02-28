@@ -29,6 +29,12 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+////////
+
+var reposController = require('./routes/repos.js');
+app.use('/api/repos', reposController);
+
+////////
 app.use('/', index);
 app.use('/users', users);
 
