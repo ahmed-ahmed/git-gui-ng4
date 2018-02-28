@@ -1,0 +1,27 @@
+<div class="repos-list panel panel-default">
+  <div class="panel-heading clearfix">
+      <h4 class="panel-title pull-left">
+          Your repositories
+          <span class="badge">{{repos.length}}</span>
+      </h4>
+      <div class="btn-group pull-right">
+          <a  class="btn btn-default">New repository</a>
+          <a  class="btn btn-default" ui-sref="addExistingRepo">Add Exsisting repository</a>
+      </div>
+  </div>
+  <!-- List group -->
+  <ul class="list-group">
+      <li *ngFor="let repos of repos ;trackBy: trackId" class="list-group-item">
+            <!-- <button class="btn btn-primary float-right jh-create-entity create-journal" [routerLink]="['/', { outlets: { popup: ['journal-new'] } }]">
+                <span class="fa fa-plus"></span>
+                <span  jhiTranslate="accountantApp.journal.home.createLabel">
+                Create new Journal
+                </span>
+            </button> -->
+        
+        <a [routerLink]="['/repo-list']">{{repos.name}}</a>
+
+          <!-- <a ui-sref="repo({name:repos.name})">{{repos.name}}</a> -->
+      </li>
+  </ul>
+</div>

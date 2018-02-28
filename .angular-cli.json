@@ -55,6 +55,10 @@
   },
   "defaults": {
     "styleExt": "sass",
-    "component": {}
+    "component": {},
+    "serve": {
+      "port": 4444,
+      "host": "ama29-desktop2.sf.cloud.cas.org"
+    }
   }
 }
