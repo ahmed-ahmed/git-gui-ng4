@@ -6,9 +6,13 @@ import { AppComponent } from './app.component';
 import { RepoListComponent } from './repo-list/repo-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import  { RouterModule, Routes }  from '@angular/router';
+import { ReposPageComponent } from './repos-page/repos-page.component';
+import { ReposFilesComponent } from './repos-files/repos-files.component';
 
 const appRoutes: Routes = [
-  { path: 'repo-list', component: RepoListComponent }
+  { path: 'repo-list', component: RepoListComponent },
+  { path: 'repo-page/:name', component: ReposPageComponent },
+  
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
   //   path: 'heroes',
@@ -19,7 +23,7 @@ const appRoutes: Routes = [
   //   redirectTo: '/heroes',
   //   pathMatch: 'full'
   // },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: RepoListComponent }
 ];
 
 
@@ -27,7 +31,9 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    RepoListComponent
+    RepoListComponent,
+    ReposPageComponent,
+    ReposFilesComponent
   ],
   imports: [
     BrowserModule,
