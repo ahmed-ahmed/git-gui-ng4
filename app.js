@@ -27,12 +27,15 @@ app.use(sassMiddleware({
   indentedSyntax: true, // true = .sass and false = .scss
   sourceMap: true
 }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 ////////
-
 var reposController = require('./routes/repos.js');
 app.use('/api/repos', reposController);
+
+app.get('/*', function(req, res){
+  res.sendFile(__dirname + '/dist/index.html');
+});
 
 ////////
 app.use('/', index);
