@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-repos-page',
@@ -8,19 +9,28 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./repos-page.component.sass']
 })
 export class ReposPageComponent implements OnInit {
-  private url = 'http://ama29-desktop2.sf.cloud.cas.org:3000/api/repos';
+  private url = 'api/repos';
 
-  private repoName;// = "git-gui";
-  private readMe;
+  @Output() private repoName: String;
+  private readMe: String;
 
   constructor(private http: HttpClient,   private router: Router,   private route: ActivatedRoute) { }
   // constructor() {}
   ngOnInit() {
-    this.repoName = this.route.snapshot.paramMap.get('name');
+    this.route.params.subscribe(params => {
+        console.log(params);
+    });
+
+    // this.route.paramMap
+    // .switchMap((params: ParamMap) => {
+    //   console.log(params.get('name'));
+    //   console.log(params.get('folder'));
+    // });
+
+    // this.repoName = 'git-gui' ;//this.route.snapshot.paramMap.get('name');
 
     // this.route.paramMap.switchMap((params: ParamMap) => this.service.getHero(params.get('id')));
-    
-    this.getReadMe(this.repoName).subscribe(items => this.readMe = items);
+    // this.getReadMe(this.repoName).subscribe(items => this.readMe = items);
   }
 
 //   getReadMe(repoName) {
@@ -34,7 +44,7 @@ export class ReposPageComponent implements OnInit {
 
 
   private getReadMe(repoName) {
-      return this.http.get<any[]>(this.url)
+      return this.http.get<any[]>(this.url);
   }
 }
 

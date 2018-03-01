@@ -7,24 +7,20 @@ HI : {{repoName}}
     </h4>
   </div>
   <table class="files-list table table-hover">
-    <tr ng-repeat="file in files track by $index">
+    <tr *ngFor="let file of files ;trackBy: trackId">
       <td>
-        <i ng-if="file.size!=='-'" class="fa fa-file-text-o"></i>
-        <i ng-if="file.size==='-'" class="fa fa-folder-o"></i>
+          <i *ngIf="file.size!=='-'" class="fa fa-file-text-o"></i>
+          <i *ngIf="file.size==='-'" class="fa fa-folder-o"></i>
       </td>
       <td>
-
-        <!-- /repo/:name/blob/master/*path -->
-        <a ng-if="file.size!=='-'" href="/repo/{{repoName}}/blob/master/{{folderName}}/{{file.name}}">{{file.name}}</a>
-        <a ng-if="file.size==='-'" href="/repo/{{repoName}}/tree/master/{{folderName}}/{{file.name}}">
+          <!-- repo/:name/tree/master/*path -->
+        <a *ngIf="file.size==='-'" href="/repo/{{repoName}}/tree/master/{{path}}/{{file.name}}">
           {{file.name}}
         </a>
+        <span *ngIf="file.size!=='-'" >{{file.name}}</span>
       </td>
-      <td>
-        <!-- <span ng-attr-title="{{file.commitMessage}}">
-          {{file.commitMessage| limitTo : 50}}
-        </span> -->
-        <span ng-if="file.commitMessage.length > 50">...</span>
+      <td> 
+          {{file.commitMessage}}
       </td>
       <td>{{file.lastModifiedDate}}</td>
       <td>{{file.changedBy}}</td>

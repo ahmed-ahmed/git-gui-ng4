@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./repo-list.component.sass']
 })
 export class RepoListComponent implements OnInit {
-  private url = 'http://ama29-desktop2.sf.cloud.cas.org:3000/api/repos';
+  private url = 'api/repos';
   private repos = [];
 
 
