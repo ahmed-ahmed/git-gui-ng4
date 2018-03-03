@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "server": "nodemon ./bin/www",
     "ng": "ng",
     "start": "ng serve --port 9812",
     "build": "ng build --prod",
@@ -27,14 +26,7 @@
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "core-js": "^2.4.1",
-    "debug": "~2.6.9",
-    "express": "~4.15.5",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.0",
-    "node-sass-middleware": "0.9.8",
-    "nodemon": "^1.17.1",
     "rxjs": "^5.5.2",
-    "serve-favicon": "~2.4.5",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
