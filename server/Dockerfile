@@ -14,7 +14,7 @@ COPY ./bin /usr/src/bin
 ENV PATH /usr/node_modules/.bin:$PATH
 
 RUN cp -a /tmp/node_modules /usr/src/node_modules
-# COPY . /usr/src
+
 WORKDIR /usr/src
 
 CMD ["npm", "start"]
