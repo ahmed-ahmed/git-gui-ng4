@@ -1,6 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -14,12 +13,12 @@ export class ReposPageComponent implements OnInit {
   @Output() private repoName: String;
   private readMe: String;
 
-  constructor(private http: HttpClient,   private router: Router,   private route: ActivatedRoute) { }
+  constructor(private http: HttpClient) { }
   // constructor() {}
   ngOnInit() {
-    this.route.params.subscribe(params => {
-        console.log(params);
-    });
+    // this.route.params.subscribe(params => {
+    //     console.log(params);
+    // });
 
     // this.route.paramMap
     // .switchMap((params: ParamMap) => {

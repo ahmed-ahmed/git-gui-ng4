@@ -13,15 +13,18 @@ export class RepoListComponent implements OnInit {
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log('Repo List Component');
+   }
 
 
   ngOnInit() {
+    console.log('Repo List Component');
     this.getRepos().subscribe(items => this.repos = items);
   }
 
   private getRepos(): Observable<any[]> {
-      return this.http.get<any[]>(this.url)
+      return this.http.get<any[]>(this.url);
   }
 
 }
