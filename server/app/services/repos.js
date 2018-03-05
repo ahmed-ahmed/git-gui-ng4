@@ -45,6 +45,7 @@ exports.getRepos = ()=>{
 }
 
 function getRepos() {
+    console.log(reposPath);
     let data = fs.readFileSync(reposPath);
     let repos = [];
     data.toString().split("\n").forEach((line)=> {

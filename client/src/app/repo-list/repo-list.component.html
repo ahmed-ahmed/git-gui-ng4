@@ -12,16 +12,7 @@
   <!-- List group -->
   <ul class="list-group">
       <li *ngFor="let repos of repos ;trackBy: trackId" class="list-group-item">
-            <!-- <button class="btn btn-primary float-right jh-create-entity create-journal" [routerLink]="['/', { outlets: { popup: ['journal-new'] } }]">
-                <span class="fa fa-plus"></span>
-                <span  jhiTranslate="accountantApp.journal.home.createLabel">
-                Create new Journal
-                </span>
-            </button> -->
-            <!-- [routerLink]="['/repo-page', repos.name]" -->
-        <a >{{repos.name}}</a>
-
-          <!-- <a ui-sref="repo({name:repos.name})">{{repos.name}}</a> -->
+            <a uiSref="repo" [uiParams]="{ name:repos.name }">{{repos.name}}</a>
       </li>
   </ul>
 </div>

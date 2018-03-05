@@ -21,6 +21,10 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 const STATES = [
   { name: 'home', url: '/home', component: RepoListComponent },
+  { name: 'repo', url: '/repo/:name',  component: ReposPageComponent}
+
+
+
   // { name: 'world', url: '/world', component: WorldComponent },
   // { name: 'world.nest', url: '/nest', component: NestComponent },
 ];

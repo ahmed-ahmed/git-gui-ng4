@@ -4,7 +4,14 @@ services:
     build: ./server
     volumes:
       - ./server/app:/usr/src/app
+      - .:/root/git-gui
     environment:
       - PORT=3000
     ports: 
       - 3000:3000
+  git-gui-client:
+    build: ./client
+    volumes:
+      - ./client/src:/usr/src/src
+    ports:
+      - 9812:9812

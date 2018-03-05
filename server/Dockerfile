@@ -8,6 +8,7 @@ RUN cd /tmp && npm install --quiet
 
 COPY nodemon.json /usr/src/nodemon.json
 COPY package.json /usr/src/package.json
+COPY .git-gui  /root/.git-gui
 COPY ./bin /usr/src/bin
 
 # add `/usr/src/node_modules/.bin` to $PATH

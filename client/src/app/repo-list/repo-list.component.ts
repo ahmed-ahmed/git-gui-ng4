@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import {environment} from './../../environments/environment'
 
 @Component({
   selector: 'app-repo-list',
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./repo-list.component.sass']
 })
 export class RepoListComponent implements OnInit {
-  private url = 'api/repos';
+  private url = environment.api + 'api/repos';
   private repos = [];
 
 
@@ -19,7 +20,6 @@ export class RepoListComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log('Repo List Component');
     this.getRepos().subscribe(items => this.repos = items);
   }
 
