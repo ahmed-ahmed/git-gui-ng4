@@ -1,8 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/switchMap';
-import {environment} from './../../environments/environment'
-import {Transition} from "ui-router-ng2"
+import {environment} from './../../environments/environment';
+import { Transition } from '@uirouter/core';
 
 @Component({
   selector: 'app-repos-page',
@@ -15,17 +15,18 @@ export class ReposPageComponent implements OnInit {
   private repoName: String;
   private readMe: String;
 
-  constructor(private http: HttpClient, private trans:Transition) {
-    this.repoName = trans.params().name;
+  constructor(private http: HttpClient, private transition: Transition) {
+    this.repoName = transition.params().name;
   }
+
 
   // constructor() {}
   ngOnInit() {
-    this.getReadMe(this.repoName).subscribe(data => this.readMe = data);
+    // this.getReadMe(this.repoName).subscribe(data => this.readMe = data);
   }
 
 
   private getReadMe(repoName) {
-    return this.http.get(`${this.url}/${repoName}/readme`);
+    return this.http.get<String>(`${this.url}/${repoName}/readme`);
   }
 }

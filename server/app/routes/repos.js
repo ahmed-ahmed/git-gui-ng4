@@ -18,6 +18,8 @@ controller.post('/', (req, res) => {
 // /api/repos/${repoName}?path=`+encodeURI(folderName)
 controller.get('/:repo/tree/:branch/*', (req, res) => {
     let {repo,branch} = req.params
+    // res.json(req.params);
+
     service.getFiles(repo,branch, req.params[0]).then(data => {
          res.json(data);
     });

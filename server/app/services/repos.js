@@ -11,8 +11,8 @@ var fs = require('fs');
 var packagePath = process.cwd();
 
 var reposPath = getUserHome() + '/.git-gui/repos'; //`${packagePath}/settings/repos`
-var blamePath = `${packagePath}/bash/better-blame.sh`
-
+var blamePath = `${packagePath}/app/bash/better-blame.sh`
+// /usr/src/app/bash
 exports.addRepo = (name, path)=> {
 
     var homePath = getUserHome();
@@ -67,6 +67,7 @@ exports.getFile = (repo, branch, path) => {
     var repoPath = repos[repo].path;
     var filePath = repoPath + '/' + path;
 
+
     fs.readFile(filePath, function(err, data) {
         if (err) throw err;
         deferred.resolve(data.toString());
@@ -78,8 +79,8 @@ exports.getFile = (repo, branch, path) => {
 exports.getFiles = (repo, branch, path) => {
     var deferred = $q.defer();
     var cmd = blamePath;
+    console.log(`blame path: ${blamePath}`);
     var repos = getRepos();
-    console.log(repos)
     var repoPath = repos[repo].path;
     var workingDir = repoPath + '/' + path;
 

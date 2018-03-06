@@ -14,7 +14,7 @@ HI : {{repoName}}
       </td>
       <td>
           <!-- repo/:name/tree/master/*path -->
-        <a *ngIf="file.size==='-'" href="/repo/{{repoName}}/tree/master/{{path}}/{{file.name}}">
+        <a *ngIf="file.size==='-'" [href]="getLink(repoName,path,file.name)">
           {{file.name}}
         </a>
         <span *ngIf="file.size!=='-'" >{{file.name}}</span>

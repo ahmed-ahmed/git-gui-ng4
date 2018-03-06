@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Transition } from '@uirouter/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-repos-files',
@@ -7,28 +9,36 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./repos-files.component.sass']
 })
 export class ReposFilesComponent implements OnInit {
-//   private repoName: String;
-//   private path: String;
-//   private files;
+  private url = environment.api + 'api/repos';
+  private repoName: String;
+  private path: String;
+  private files;
 
-//   constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private transition: Transition) { 
+    this.repoName = transition.params().name;
+    this.path = transition.params().path;
+  }
 
-//   get url() {
-//     console.log(`/api/repos/${this.repoName}/tree/master/${this.path}`);
-//     return `/api/repos/${this.repoName}/tree/master/${this.path}`;
-//   }
 
-  ngOnInit() {}
-//     this.route.params.subscribe(params => {
-//       this.repoName = params['name'];
-//       this.path = params['path'] || '';
-//       // let url = `/api/repos/${this.repoName}/tree/master/`;
-//       this.http.get<String[]>(this.url).subscribe(items => this.files = items);
-//     });
-//   }
+  ngOnInit() {
+      this.getFiles().subscribe(items => this.files = items);
+  }
 
-//   getFiles(repoName, path) {
-//     return this.http.get<String[]>(this.url);
-// }
+  getFiles() {
+    let url = this.url +  `/${this.repoName}/tree/master/${this.path}`;
+    console.log(url);
+    // if(path) {
+    //     url = url + path;
+    // }
+    return this.http.get<String[]>(url);
+  }
 
+  getLink(repo,path,fileName) {
+    if(path) {
+      return `/repo/${repo}/tree/master/${path}/${fileName}`; 
+    } else {
+      return `/repo/${repo}/tree/master/${fileName}`;
+    }
+    
+  }
 }

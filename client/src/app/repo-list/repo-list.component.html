@@ -12,7 +12,7 @@
   <!-- List group -->
   <ul class="list-group">
       <li *ngFor="let repos of repos ;trackBy: trackId" class="list-group-item">
-            <a uiSref="repo" [uiParams]="{ name:repos.name }">{{repos.name}}</a>
+            <a uiSref="folder" [uiParams]="{ name: repos.name, path: null }">{{repos.name}}</a>
       </li>
   </ul>
 </div>
