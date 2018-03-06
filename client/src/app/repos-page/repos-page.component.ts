@@ -1,6 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/switchMap';
+import {environment} from './../../environments/environment'
+import {Transition} from "ui-router-ng2"
 
 @Component({
   selector: 'app-repos-page',
@@ -8,68 +10,22 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./repos-page.component.sass']
 })
 export class ReposPageComponent implements OnInit {
-  private url = 'api/repos';
+  private url = environment.api + 'api/repos';
 
-  @Output() private repoName: String;
+  private repoName: String;
   private readMe: String;
 
-  constructor(private http: HttpClient) { }
-  // constructor() {}
-  ngOnInit() {
-    // this.route.params.subscribe(params => {
-    //     console.log(params);
-    // });
-
-    // this.route.paramMap
-    // .switchMap((params: ParamMap) => {
-    //   console.log(params.get('name'));
-    //   console.log(params.get('folder'));
-    // });
-
-    // this.repoName = 'git-gui' ;//this.route.snapshot.paramMap.get('name');
-
-    // this.route.paramMap.switchMap((params: ParamMap) => this.service.getHero(params.get('id')));
-    // this.getReadMe(this.repoName).subscribe(items => this.readMe = items);
+  constructor(private http: HttpClient, private trans:Transition) {
+    this.repoName = trans.params().name;
   }
 
-//   getReadMe(repoName) {
-//     // var data = `"# git gui\n\nA`
-//     // var deferred = $q.defer();
-//     // deferred.resolve({data: data});
-//     // return deferred.promise;
-//     // var data = `"# git gui\n\nA graphical user interface to manage git repos\n\n```\nnpm start \nwebpack --watch\n```"
-//     return this.$http.get(`/api/repos/${repoName}/readme`);
-// }
+  // constructor() {}
+  ngOnInit() {
+    this.getReadMe(this.repoName).subscribe(data => this.readMe = data);
+  }
 
 
   private getReadMe(repoName) {
-      return this.http.get<any[]>(this.url);
+    return this.http.get(`${this.url}/${repoName}/readme`);
   }
 }
-
-
-
-// import app from '../../modules.js';
-// import template from './repos-page.html';
-
-// class ReposPageController{
-//     constructor(reposService){
-//         this.reposService = reposService;
-//     }
-
-//     $onInit() {
-//         this.reposService.getReadMe(this.repoName).then((res)=>{
-//             this.readme = res.data
-//         });
-//     }
-// }
-
-// const component = {
-//     bindings: {
-//         repoName: '<'
-//     },
-//     controller: ReposPageController,
-//     template
-// };
-
-// app.component('reposPage', component);

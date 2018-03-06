@@ -58,8 +58,7 @@
     "component": {},
     "serve": {
       "port": 4444,
-      "host": "ama29-desktop2.sf.cloud.cas.org",
-      "host": ""
+      "host": "0.0.0.0"
     }
   }
 }

@@ -14,4 +14,6 @@ services:
     volumes:
       - ./client/src:/usr/src/src
     ports:
-      - 9812:9812
+      - 4444:4444
+    depends_on:
+      - git-gui-backend
